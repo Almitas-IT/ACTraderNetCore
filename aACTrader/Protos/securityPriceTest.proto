@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "aACTrader.Protos";
+
+service SecurityPriceTest {
+	rpc GetLivePrices (google.protobuf.Empty) returns (SecurityPriceReply);
+}
+
+message SecurityPriceReply {
+	repeated SecurityPriceTO Result = 1;
+}
+
+message SecurityPriceTO {
+	google.protobuf.StringValue Ticker = 1;
+	google.protobuf.StringValue Src = 3;
+	google.protobuf.DoubleValue ClsPrc = 4;
+	google.protobuf.DoubleValue LastPrc = 5;
+	google.protobuf.DoubleValue BidPrc = 6;
+	google.protobuf.DoubleValue AskPrc = 7;
+	google.protobuf.DoubleValue MidPrc = 8;
+	google.protobuf.Int32Value BidSz = 9;
+	google.protobuf.Int32Value AskSz = 10;
+	google.protobuf.DoubleValue Vol = 11;
+	google.protobuf.DoubleValue PrcRtn = 12;
+	google.protobuf.DoubleValue PrcChng = 13;
+	google.protobuf.DoubleValue DvdAmt = 14;
+	google.protobuf.Timestamp TrdDt = 15;
+	google.protobuf.StringValue TrdTm = 16;
+	google.protobuf.DoubleValue VolAvg20PctW = 17;
+}

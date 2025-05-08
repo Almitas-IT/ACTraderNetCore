@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "aACTrader.Protos";
+
+// The weather forecast service definition.
+service WeatherForecastTest {
+	// Get weather forecast
+	rpc GetWeatherForecast (google.protobuf.Empty) returns (WeatherForecastReply);
+	rpc GetWeatherForecastForDate (google.protobuf.Timestamp) returns (WeatherForecastReply);
+}
+
+// The response message containing the weather information.
+message WeatherForecastReply {
+	repeated WeatherForecastTO Result = 1;
+}
+
+message WeatherForecastTO {
+	google.protobuf.Timestamp Date = 1;
+	int32 TemperatureC = 2;
+	int32 TemperatureF = 3;
+	string Summary = 4;
+}
